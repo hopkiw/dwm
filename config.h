@@ -24,10 +24,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Google-chrome",  NULL, NULL,       1 << 8,       0,           -1 },
+	/* class            instance           title       tags mask     isfloating   monitor */
+	{ "Gimp",           NULL,              NULL,       0,            1,           -1 },
+	{ "Firefox",        NULL,              NULL,       1 << 8,       0,           -1 },
+	{ "Google-chrome",  NULL,              NULL,       1 << 8,       0,           -1 },
+	{ "Google-chrome",  "keep.google.com", NULL,       1 << 6,       0,           -1 },
+	{ "Google-chrome",  "chat.google.com", NULL,       1 << 8,       0,           -1 },
+	{ "Spotify",        NULL,              NULL,       1 << 7,       0,           -1 },
+	{ "discord",        NULL,              NULL,       1 << 7,       0,           -1 },
+	{ "Pavucontrol",    NULL,              NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -57,14 +62,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-l", "10", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvtcd", NULL };
+static const char *screencmd[]  = { "/home/liamh/bin/mysnipit", "dmenu", NULL };
+//static const char *menu9cmd[]  = { "9menu", "-teleport", "-popdown", "heh:there", NULL };
+static const char *menu9cmd[]  = { "diodon", NULL };
 //static const char *lockcmd[]  = { "/bin/sh" "-c", "/usr/share/goobuntu-desktop-files/xsecurelock.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_x,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd  } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = screencmd } },
 	//{ MODKEY,                       XK_Tab,    spawn,          {.v = lockcmd  } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -112,6 +121,7 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         ControlMask,    Button3,        spawn,          {.v = menu9cmd } },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
