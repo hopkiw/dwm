@@ -5,10 +5,12 @@ static const char *fonts[] = {
 	"monospace:size=10"
 };
 static const char dmenufont[]       = "monospace:size=10";
-static const char normbordercolor[] = "#444444";
+//static const char normbordercolor[] = "#444444";
+static const char normbordercolor[] = "#000000";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
+//static const char selbordercolor[]  = "#005577";
+static const char selbordercolor[]  = "#000000";
 static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -26,13 +28,14 @@ static const Rule rules[] = {
 	 */
 	/* class            instance           title       tags mask     isfloating   monitor */
 	{ "Gimp",           NULL,              NULL,       0,            1,           -1 },
-	{ "Firefox",        NULL,              NULL,       1 << 8,       0,           -1 },
-	{ "Google-chrome",  NULL,              NULL,       1 << 8,       0,           -1 },
-	{ "Google-chrome",  "keep.google.com", NULL,       1 << 6,       0,           -1 },
-	{ "Google-chrome",  "chat.google.com", NULL,       1 << 8,       0,           -1 },
+	//{ "Firefox",        NULL,              NULL,       1 << 7,       0,           -1 },
+	//{ "Google-chrome",  NULL,              NULL,       1 << 8,       0,           -1 },
+	//{ "Google-chrome",  "keep.google.com", NULL,       1 << 6,       0,           -1 },
+	//{ "Google-chrome",  "chat.google.com", NULL,       1 << 8,       0,           -1 },
 	{ "Spotify",        NULL,              NULL,       1 << 7,       0,           -1 },
 	{ "discord",        NULL,              NULL,       1 << 7,       0,           -1 },
 	{ "Pavucontrol",    NULL,              NULL,       0,            1,           -1 },
+	{ "Blueman-manager",NULL,              NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
